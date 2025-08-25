@@ -1,0 +1,11 @@
+// Calculadora.idl
+module CalculadoraApp {
+    interface Calculadora {
+        // Realiza uma operação entre dois valores
+        double calculate(
+            in double valor1, 
+            in double valor2, 
+            in string operacao
+        );
+    };
+};
