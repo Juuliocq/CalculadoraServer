@@ -1,28 +1,24 @@
-FROM ubuntu:20.04
+FROM debian:bullseye
 
-# Evita prompts interativos
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Atualiza pacotes e instala dependências
 RUN apt-get update && apt-get install -y \
     build-essential \
-    omniORB \
     omniidl \
+    omniorb \
     libomniorb4-dev \
     libcos4-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Cria diretório da aplicação
 WORKDIR /app
 
-# Copia todos os arquivos do projeto
 COPY . .
 
-# Compila o código
+# Copia configuração do ORB (opcional)
+COPY omniORB.cfg /etc/omniORB.cfg
+
 RUN g++ -o servidor servidor.cpp CalculadoraSK.cc -lomniORB4 -lomnithread -lCOS4
 
-# Porta padrão para objetos CORBA (omniORB usa 2809 por padrão)
 EXPOSE 2809
 
-# Comando de inicialização
 CMD ["./servidor"]
