@@ -41,6 +41,9 @@ int main(int argc, char* argv[]) {
             args.push_back(std::string(orbInitRef));
         }
 
+        args.push_back("-ORBendPoint");
+        args.push_back("giop:tcp:10.0.0.206:37000"); // <--- Porta fixa
+
         // Cria vetor de char* para ORB_init
         std::vector<char*> argv_orb;
         for (auto& arg : args) {
