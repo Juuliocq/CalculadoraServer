@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     omniidl \
     omniorb \
-    omniorb-idl \
+    python3-omniidl \
     libomniorb4-dev \
     libcos4-dev \
     && rm -rf /var/lib/apt/lists/*
