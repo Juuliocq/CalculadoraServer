@@ -14,9 +14,6 @@ WORKDIR /app
 
 COPY . .
 
-# Copia configuração do ORB (opcional)
-COPY omniORB.cfg /etc/omniORB.cfg
-
 RUN g++ -o servidor servidor.cpp CalculadoraSK.cc -lomniORB4 -lomnithread -lCOS4
 
 EXPOSE 2809
