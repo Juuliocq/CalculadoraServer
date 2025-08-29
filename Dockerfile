@@ -18,4 +18,4 @@ RUN g++ -o server server.cpp CalculadoraSK.cc -I/usr/include/omniorb4 -lomniORB4
 
 EXPOSE 2809
 
-CMD ["./servidor"]
+CMD ["./server"]
