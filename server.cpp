@@ -28,7 +28,27 @@ public:
 
 int main(int argc, char* argv[]) {
     try {
-        CORBA::ORB_var orb = CORBA::ORB_init(argc, argv);
+        const char* orbInitRef = std::getenv("ORB_INITREF_NAME_SERVICE");
+
+        std::vector<std::string> args;
+
+        // Sempre o nome do programa primeiro
+        args.push_back(argv[0]);
+
+        if (orbInitRef) {
+            args.push_back("-ORBInitRef");
+            args.push_back(std::string(orbInitRef));
+        }
+
+        // Cria vetor de char* para ORB_init
+        std::vector<char*> argv_orb;
+        for (auto& arg : args) {
+            argv_orb.push_back(const_cast<char*>(arg.c_str()));
+        }
+
+        int orbArgc = static_cast<int>(argv_orb.size());
+
+        CORBA::ORB_var orb = CORBA::ORB_init(orbArgc, argv_orb.data());
 
         // Obtém RootPOA e ativa o POAManager
         CORBA::Object_var poa_obj = orb->resolve_initial_references("RootPOA");

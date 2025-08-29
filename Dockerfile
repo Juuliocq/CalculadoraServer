@@ -14,7 +14,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN g++ -o servidor servidor.cpp CalculadoraSK.cc -lomniORB4 -lomnithread -lCOS4
+RUN g++ -o server server.cpp CalculadoraSK.cc -I/usr/include/omniorb4 -lomniORB4 -lomnithread
 
 EXPOSE 2809
 
