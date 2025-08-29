@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Calculadora.hh" // Arquivo gerado pelo omniidl - Skeleton
 
 class CalculadoraImpl : public POA_CalculadoraApp::Calculadora {
